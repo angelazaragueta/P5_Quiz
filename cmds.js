@@ -41,7 +41,7 @@ const makeQuestion=(rl,text)=>{
 exports.addCmd = rl => {
 	makeQuestion(rl,'Introduzca una pregunta:')
 	.then(q=>{
-		return makeQuestion(rl,'Introduzca la respuesta')
+		return makeQuestion(rl,'Introduzca la respuesta: ')
 		.then(a=>{
 			return {question:q,answer:a};
 		});
@@ -198,7 +198,7 @@ exports.playCmd =rl=>{
 								
 						}else{
 							log(`Incorrecto. `);
-							log(`Fin del juego: Aciertos: `+ puntos);
+							log(`Fin del juego: Aciertos: `+ score);
 							
 							rl.prompt();
 						}	
@@ -240,7 +240,7 @@ exports.editCmd =(rl, id)=>{
 		process.stdout.isTTY && setTimeout(()=>{rl.write(quiz.question)},0);
 		return makeQuestion(rl, 'Introduzca la pregunta:')
 		.then(q=>{
-			rocess.stdout.isTTY && setTimeout(()=>{rl.write(quiz.answer)},0);
+			process.stdout.isTTY && setTimeout(()=>{rl.write(quiz.answer)},0);
 		return makeQuestion(rl, 'Introduzca la respuesta:')
 		.then(a=>{
 			quiz.question=q;
