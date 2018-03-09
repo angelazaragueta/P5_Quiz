@@ -198,7 +198,7 @@ exports.playCmd =rl=>{
 								
 						}else{
 							log(`Incorrecto. `);
-							log(`Fin del juego: Aciertos: `+ score);
+							log(`Fin: `+ score);
 							
 							rl.prompt();
 						}	
