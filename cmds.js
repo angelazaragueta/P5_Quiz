@@ -128,9 +128,9 @@ validateId(id)
             if (!quiz){
                 throw new Error(`No existe un quiz asociado al id=${id}.`);
             }
-           return makeQuestion(rl,colorize(quiz.question +'? ','red'))
-                .then (respuesta => {
-                    if (respuesta.toLowerCase().trim() === quiz.answer.toLowerCase()) {
+           return makeQuestion(rl,quiz.question)
+                .then (answer => {
+                    if (answer.toLowerCase().trim() === quiz.answer.toLowerCase()) {
                         log(`Su respuesta es correcta.`);
                         biglog('Correcta', 'green');
                     } else {
