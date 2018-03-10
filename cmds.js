@@ -193,12 +193,12 @@ exports.playCmd =rl=>{
 					.then(a => {
 						if(( a.toLowerCase()) === (quiz.answer.toLowerCase().trim())){
 							score++;
-							log(`Correcto - Lleva `+ score + `  aciertos`);
+							log(`CORRECTO - Lleva `+ score + `  aciertos`);
 							playOne();
 								
 						}else{
-							log(`Incorrecto. `);
-							log(`Fin: `+ score);
+							log(`INCORRECTO. `);
+							log(`Fin del juego: `+ score);
 							
 							rl.prompt();
 						}	
@@ -217,9 +217,9 @@ exports.playCmd =rl=>{
 };*/let score = 0; //acumulov el resultado
   		let toBePlayed = []; //array a rellenar con todas las preguntas de la BBDD. Como se consigue? Con una promesa
 
-      for (i=0; i<models.quiz.count();i++){
+     /* for (i=0; i<models.quiz.count();i++){
         toBeResolved[i]=i;
-      }
+      }*/
 
   		const playOne = () => {
         return new Promise ((resolve, reject) => {
@@ -229,10 +229,9 @@ exports.playCmd =rl=>{
   					resolve();
   					return;
   				}
-  				let pos = Math.floor(Math.random()*toBePlayed.length);
-  				let quiz = toBePlayed[pos];
-  		    toBePlayed.splice(pos, 1); //lo borro porque ya no lo quiero más
-
+  				let id = Math.abs(Math.floor(Math.random()*toBePlayed.length));
+  				let quiz = toBePlayed[id];
+  		    toBePlayed.splice(id, 1); 
   		    makeQuestion(rl, quiz.question)
   		    .then(answer => {
             if(answer.toLowerCase().trim() === quiz.answer.toLowerCase().trim()){
@@ -255,7 +254,7 @@ exports.playCmd =rl=>{
   		 	return playOne(); //es necesario esperar a que la promesa acabe, por eso no es un return a secas
   		 })
   		.catch(e => {
-  			errorlog("Error:" + e); //usar errorlog con colores
+  			console.log("Error:" + e); //usar errorlog con colores
   		})
   		.then(() => {
   			biglog(score, 'blue');
