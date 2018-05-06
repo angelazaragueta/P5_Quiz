@@ -1,23 +1,18 @@
 {
-  "name": "p2_quiz",
-  "version": "1.0.0",
-  "description": "Proyecto Quiz",
-  "main": "main.js",
-  "dependencies": {
-    "chalk": "^2.3.1",
-    "figlet": "^1.2.0",
-    "sequelize": "^4.35.2",
-    "sqlite3": "^3.1.13"
-  },
-  "devDependencies": {},
+  "name": "p5-quiz",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "start": "node main.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "keywords": [
-    "core",
-    "quiz"
-  ],
-  "author": "Angela Zaragüeta Muñoz",
-  "license": "ISC"
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "ejs": "^2.5.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "morgan": "~1.9.0",
+    "sequelize": "^4.37.6",
+    "sqlite3": "^4.0.0"
+  }
 }
